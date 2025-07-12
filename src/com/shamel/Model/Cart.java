@@ -10,7 +10,7 @@ enum Type{
     PHYSICAL, VIRTUAL
         }
 
-public class Cart{
+public class Cart implements Comparable<Cart>{
 
     private int id;
     private List<Product> products;
@@ -56,6 +56,7 @@ public class Cart{
     public void printSalesSlip(){
 
         System.out.println("items bought:");
+
         products.forEach(System.out::println);
 
     }
@@ -75,4 +76,18 @@ public class Cart{
     public int hashCode() {
         return 33*id;
     }
+
+    @Override
+    public int compareTo(Cart o) {
+        int result = this.date.compareTo(o.date);
+        if(result == 0){
+            result =((Integer) this.id).compareTo(o.id);
+        }
+        return result;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
 }
