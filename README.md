@@ -20,9 +20,9 @@ This project was developed as part of my learning path to become a professional 
 ## 🧠 Technologies Used
 
 - Java SE
-- Java Collections (ArrayList, HashMap)
+- Java Collections (ArrayList, HashSet, HashMap)
 - Enums
-- Object-Oriented Design (encapsulation, abstraction)
+- Object-Oriented Design (encapsulation, composition, abstraction)
 
 ---
 
