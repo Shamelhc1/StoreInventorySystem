@@ -1,6 +1,6 @@
 package com.shamel.Model;
 
-class InventoryItem{
+public class InventoryItem{
 
     private Product product;
 
@@ -31,15 +31,18 @@ class InventoryItem{
         qtyReserved = (howMany > unreserved) ? qtyReserved : qtyReserved+howMany;
         int aileRemaining = qtyTotal - qtyReserved;
 
-        System.out.println("Items reserved: " + qtyReserved + " Remaining: " + aileRemaining);
+//        System.out.println("Items reserved: " + qtyReserved + " Remaining: " + aileRemaining);
     }
 
     // method to sell the items reserved
     public void SellItem(){
 
-        qtyTotal -= qtyReserved;
-        System.out.println("Items sold: "+ qtyReserved + " Items remaining: " + qtyTotal);
+        qtyTotal = qtyTotal - qtyReserved;
+        System.out.println( this.product.name()+" Items sold: "+ qtyReserved + " Items remaining: " + qtyTotal);
         placeInventoryItem();
+
+        //Adjusts the reserved items to none after said item is sold.
+        releaseItem();
     }
 
     // method to unreserve items
@@ -56,6 +59,10 @@ class InventoryItem{
 
     public Product getProduct() {
         return product;
+    }
+
+    public int getQtyTotal() {
+        return qtyTotal;
     }
 
     @Override

@@ -48,6 +48,14 @@ public class Cart implements Comparable<Cart>{
         System.out.println(product+" added to your Cart");
     }
 
+    public void addItems(Product product, int how_many){
+        for(int i=1; i<= how_many; i++){
+            addItems(product);
+            i++;
+        }
+//        System.out.println(product+" added to your Cart");
+    }
+
     public void removeItem(Product product){
         products.remove(product);
         System.out.println(product+" removed from your Cart");
@@ -90,4 +98,7 @@ public class Cart implements Comparable<Cart>{
         return products;
     }
 
+    public LocalDate getDate() {
+        return date;
+    }
 }

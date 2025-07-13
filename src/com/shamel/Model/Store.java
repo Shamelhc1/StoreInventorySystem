@@ -1,5 +1,6 @@
 package com.shamel.Model;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class Store {
@@ -8,6 +9,8 @@ public class Store {
     private Set<Cart> carts;
     private EnumMap<Category, Set<InventoryItem>> aisleInventory = new EnumMap<>(Category.class);
 
+
+    // instantiates a store, the aisleInventory Map is calculated from the inventories Set
     public Store(Set<InventoryItem> inventories, Set<Cart> carts) {
         this.invetories = inventories;
         this.carts = carts;
@@ -50,9 +53,26 @@ public class Store {
                 }
         );
         carts.clear();
-
     }
 
+
+    // abandons older carts
+    public void abandonCart(){
+        List<Cart> oldCart = new ArrayList<>(carts);
+        oldCart.removeIf(cart ->  cart.getDate().equals(LocalDate.now()));
+        carts.removeAll(oldCart);
+    }
+
+    public void listProductsByCategory(){
+
+        aisleInventory.forEach((k,v) ->{
+
+            System.out.println(k);
+            v.forEach(i -> System.out.println( " "+ i.getProduct() + "Quantity " +i.getQtyTotal() ));
+
+                });
+
+    }
 
 
 

@@ -1,15 +1,15 @@
 package com.shamel.Model;
 
-
-enum Category{
-    DAIRY, PRODUCE, MEAT, HOUSEHOLD, SEAFOOD, DELI, BAKERY,
-}
-
 public record Product(int sku, String name, String manufacturer, Category category) {
+
+
+    public Product(String name, String manufacturer, Category category) {
+        this(0, name, manufacturer, category);
+    }
 
     @Override
     public String toString() {
-        return "%-10s%-10s%-10s%-10s".formatted(name,category,manufacturer, sku);
+        return "%-10s%-10s%-10s".formatted(name,category, sku);
     }
 
 
